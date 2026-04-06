@@ -63,6 +63,9 @@
             }
         }
 
+        resultado.innerHTML += `Com a quantidade de ${qtdmac} Macarons, ${qtdbrig} Brigadeiros, 
+        ${qtdcup} Cupcakes e ${qtdcheese} Cheesecakes, a venda totalizará R$${(qtdmac * prcmac) + (qtdbrig * prcbrig) + (qtdcheese * prccheese) + (qtdcup * prccup)}`;
+
         if (neg) {
             resultado.innerHTML = `Nenhum valor pode ser negativo`;
         }
