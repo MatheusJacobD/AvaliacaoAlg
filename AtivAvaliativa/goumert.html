@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doceria Gourmet</title>
+</head>
+
+<body>
+    <h2>Quantidade de macarons a serem vendidos</h2>
+    <input type="text" id="qtdMacarons" placeholder="quantidade">
+    <input type="text" id="prcMacarons" placeholder="valor"><br><br>
+
+    <h2>Quantidade de brigadeiros a serem vendidos</h2>
+    <input type="text" id="qtdBrigadeiros" placeholder="quantidade">
+    <input type="text" id="prcBrigadeiros" placeholder="valor"><br><br>
+
+    <h2>Quantidade de cupcakes a serem vendidos</h2>
+    <input type="text" id="qtdCupcakes" placeholder="quantidade">
+    <input type="text" id="prcCupcakes" placeholder="valor"><br><br>
+
+    <h2>Quantidade de cheesecakes a serem vendidos</h2>
+    <input type="text" id="qtdCheese" placeholder="quantidade">
+    <input type="text" id="prcCheese" placeholder="valor"><br><br>
+    <button onclick="vender()">Solicitar Vendas</button><br>
+
+    <div id="resultado"></div><br>
+
+</body>
+<script>
+    function vender() {
+        let neg = false;
+
+        let qtdmac = Number(qtdMacarons.value);
+        let prcmac = Number(prcMacarons.value);
+
+        let qtdbrig = Number(qtdBrigadeiros.value);
+        let prcbrig = Number(prcBrigadeiros.value);
+
+        let qtdcup = Number(qtdCupcakes.value);
+        let prccup = Number(prcCupcakes.value);
+
+        let qtdcheese = Number(qtdCheese.value);
+        let prccheese = Number(prcCheese.value);
+
+        let count = 0;
+
+        let lista = [[qtdmac, prcmac], [qtdbrig, prcbrig], [qtdcup, prccup], [qtdcheese, prccheese]];
+        let nomes = ['mac', 'brig', 'cup', 'cheese'];
+
+        for (let i = 0; i < lista.length; i++){
+            for (let j = 0; j < lista[i][0]; j++){
+                if (lista[i][0] > 0){
+                    count++;
+                }
+
+                if (lista[i][0] < 0 || lista[i][1] < 0){
+                    neg = true;
+                }
+
+                resultado.innerHTML += `${count}º venda - <img src='${nomes[i]}.png' style="width: 20px;"> - R$ ${lista[i][1]}<br>`;
+            }
+        }
+
+        if (neg) {
+            resultado.innerHTML = `Nenhum valor pode ser negativo`;
+        }
+    }
+</script>
+
+</html>

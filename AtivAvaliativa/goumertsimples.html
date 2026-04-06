@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doceria Gourmet</title>
+</head>
+
+<body>
+    <h2>Quantidade de macarons a serem vendidos</h2>
+    <input type="text" id="qtdMacarons" placeholder="quantidade">
+    <input type="text" id="prcMacarons" placeholder="valor"><br><br>
+
+    <h2>Quantidade de brigadeiros a serem vendidos</h2>
+    <input type="text" id="qtdBrigadeiros" placeholder="quantidade">
+    <input type="text" id="prcBrigadeiros" placeholder="valor"><br><br>
+
+    <h2>Quantidade de cupcakes a serem vendidos</h2>
+    <input type="text" id="qtdCupcakes" placeholder="quantidade">
+    <input type="text" id="prcCupcakes" placeholder="valor"><br><br>
+
+    <h2>Quantidade de cheesecakes a serem vendidos</h2>
+    <input type="text" id="qtdCheese" placeholder="quantidade">
+    <input type="text" id="prcCheese" placeholder="valor"><br><br>
+    <button onclick="vender()">Solicitar Vendas</button><br>
+
+    <div id="resultado"></div><br>
+
+</body>
+<script>
+    function vender() {
+        let neg = false;
+
+        let qtdmac = Number(qtdMacarons.value);
+        let prcmac = Number(prcMacarons.value);
+
+        let qtdbrig = Number(qtdBrigadeiros.value);
+        let prcbrig = Number(prcBrigadeiros.value);
+
+        let qtdcup = Number(qtdCupcakes.value);
+        let prccup = Number(prcCupcakes.value);
+
+        let qtdcheese = Number(qtdCheese.value);
+        let prccheese = Number(prcCheese.value);
+
+        if (qtdmac < 0 || prcmac < 0 || qtdbrig < 0 || prcbrig < 0 || qtdcup < 0 || prccup < 0 || qtdcheese < 0 || prccheese < 0) {
+            neg = true;
+        }
+
+        let count = 0;
+
+        for (let i = 0; i < qtdmac; i++) {
+            if (qtdmac > 0) {
+                count++;
+            }
+
+            resultado.innerHTML += `${count}º venda - <img src='mac.png' style="width: 20px;"> - R$ ${prcmac}<br>`;
+        }
+
+        for (let i = 0; i < qtdbrig; i++) {
+            if (qtdbrig > 0) {
+                count++;
+            }
+            resultado.innerHTML += `${count}º venda - <img src='brig.png' style="width: 20px;"> - R$ ${prcbrig}<br>`;
+        }
+
+        for (let i = 0; i < qtdcup; i++) {
+            if (qtdcup > 0) {
+                count++;
+            }
+            resultado.innerHTML += `${count}º venda - <img src='cup.png' style="width: 20px;"> - R$ ${prccup}<br>`;
+        }
+
+        for (let i = 0; i < qtdcheese; i++) {
+            if (qtdcheese > 0) {
+                count++;
+            }
+            resultado.innerHTML += `${count}º venda - <img src='cheese.png' style="width: 20px;"> - R$ ${prccheese}<br>`;
+        }
+
+        resultado.innerHTML += `Com a quantidade de ${qtdmac} Macarons, ${qtdbrig} Brigadeiros, 
+        ${qtdcup} Cupcakes e ${qtdcheese} Cheesecakes, a venda totalizará R$${(qtdmac * prcmac) + (qtdbrig * prcbrig) + (qtdcheese * prccheese) + (qtdcup * prccup)}`;
+
+        if (neg) {
+            resultado.innerHTML = `Nenhum valor pode ser negativo`;
+        }
+    }
+</script>
+
+</html>
